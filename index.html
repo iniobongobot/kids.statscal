@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kids Mathematics</title>
+	<script type="text/javascript" src="jomi.js"></script>
+	<meta name="description" content="Built by an Analyst for Kids!. Helps keep kids mind sharp by randomly giving them math questions. ">
+	<meta name="keywords" content="statistics, statistics calculator, calculator, regression">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header id="header">
+		<nav>
+			<div onclick="recollect();" id="home">HOME</div>
+			
+			<div >
+					<select id="categor" onchange="dollect()">
+					<option value = " ">Category</option>
+					<option value="addition" >Addition</option>
+					<option value="substraction" >Substraction</option>
+					<option value="multiplication" >Multiplication</option>
+					<option value="division" >Division</option>
+					</select>
+				</div>
+			<div >
+					<select id="leve" onchange="eollect()">
+					<option value="0">Level</option> 
+					<option value="25" >Level one</option>
+					<option value="50" >Level two</option>
+					<option value="75" >Level three</option>
+					<option value="100" >Level four</option>
+					<option value="150" >Level five</option>
+				</select>
+				</div>
+				
+		</nav>
+	</header>
+	<main>
+		<section id="sec1">
+			
+			<fieldset>
+				<legend>Please Fill Field</legend>
+				<label>Name: <br><input type="text" name="" id='name'></label><br>
+				<h3 id='error'></h3>
+				<label>Select Category: <br><select id="category"> 
+					<option value="addition">Addition</option>
+					<option value="substraction">Substraction</option>
+					<option value="multiplication">Multiplication</option>
+					<option value="division">Division</option>
+				</select></label><br>
+				<label>Select Level: <br><select id="level"> 
+					<option value="25">1 - Level one</option>
+					<option value="50">2 - Level two</option>
+					<option value="75">3 - Level three</option>
+					<option value="100">4 - Level four</option>
+					<option value="150">5 - Level five</option>
+				</select></label><br>
+				<button onclick="collect()">Submit</button>
+
+			</fieldset>
+		</section>
+		<secton id="sec2">
+			<div id="uppop">
+				<h2 id='jomi2'></h2>
+				<h3 id="score"></h3><br>
+				
+				<h4 id="nques" onclick="closePopUp()">Next</h4>
+			</div>
+			<h3><span id="namereplace"></span></h3>
+			<div id="zehe"></div>
+			
+			
+		</secton>
+	</main>
+</body>
+</html>
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	body{
+		background: linear-gradient(45deg, #ff339999, #33ffff99, #6633ff99), url('https://images.ctfassets.net/p0qf7j048i0q/6CoR3gS2NgLRPCV9qXURfQ/a380ddaba2b6f5d07799b4bd20f80bcb/G1147656393.jpg?w=1000&h=750&fit=fill&fm=webp');
+		height: 100%;
+		background-size: 100%;
+		background-attachment: fixed;
+		padding: 0;
+		margin: 0;
+	}
+	header{
+		cursor: pointer;
+		width: 100%;
+		height: 50px;
+		background: linear-gradient(45deg, #481661,#1e8c8c, #4826b1); 
+		margin: 0px 0% 0px 0;
+		position: fixed;
+		top: 0px;
+		display: none;
+		
+	}
+	nav{
+		height: 50px;
+		margin: 0px;
+	}
+	nav>div{
+		display: inline-block;
+		height: 100%;
+		width: 20%;
+		border: 1px inset #481661;
+		position: relative;
+		top:0px;
+		float: right;
+		margin: 0 20px 0 0;
+		color: white;
+		font-weight: bold;
+		background-color: #4826b188;
+	}
+	nav>div>select, nav>div>button{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		background-color: #4826b188;
+		letter-spacing: 2px;
+		appearance: menulist-button;
+	}
+	#home{
+		position: absolute;
+		top:0px;
+		padding: 1%;
+		text-align: center;
+	}
+
+	main{
+		margin:60px 5% 5% 5%;
+		background-color: #1e8c8c68;
+		padding:8% 15%;
+		text-align: center;
+		border-radius: 50%;
+		width: 90%;
+		height: 90%;
+	}
+	#sec1 fieldset{
+		text-align: left;
+	}
+	#sec1 fieldset legend{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 2rem;
+		text-align: left;
+	}
+	#sec1 fieldset label{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+		text-align: left;
+	}
+	#sec1 fieldset label input,label select, #sec1 fieldset button{
+		margin: 2% 25%;
+		width:50%;
+		height: 50px;
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+		text-align: center;
+		border-radius: 50px;
+		border: 2px outset black;
+		padding: 0;
+		cursor: pointer;
+	}
+	option{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+	}
+	#sec2{
+		display: none;
+		position: relative;
+	}
+	#uppop{
+		position: absolute;
+		margin: 0%;
+		width: 100%;
+		height: 350px;
+		background-color: white;
+		display: none;
+		padding: 5%;
+		text-align: center;
+		color: #000;
+		animation-name: popp;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		transition: ease;
+		border: 2px outset black;
+		border-radius: 25px;
+	}
+	@keyframes uppop {
+		0% {background-color: maroon; color: white; top:-5px;}
+		25% {background-color: pink; color: black; top:5px; }
+		50% {background-color: darkorange; color: white; top:-5px;}
+		75% {background-color: olive; color: black; top:5px;}
+		100% {background-color: maroon; color: white; top:-5px;}
+	}
+	#nques{
+		border: 2px outset black;
+		text-align: center;
+		padding: 10px 5px;
+		width: 30%;
+		height: 50px;
+		margin: 20px 35%;
+		cursor: pointer;
+		color: black;
+	}
+	h1{
+		font-size: 5rem;
+		font-weight: bolder;
+		color:navy;
+	}
+	input{
+		width:40%;
+		border-radius: 50px;
+		height:50px;
+		padding: 0 0 0 20%;
+		font-size: 2rem;
+		font-weight: bolder;
+	}
+	.check{
+		width: 30%;
+		height:60px;
+		border-radius: 50px;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	.ques{
+		width: 30%;
+		height:40px;
+		border-radius: 50px;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	h2{
+		font-size: 3rem;
+		font-weight: bolder;
+		margin: 0;
+	}
+	h3{
+		font-size: 2rem;
+		font-weight: bolder;
+		margin: 0;
+	}
+	@media (max-width: 470px){
+	header{
+		cursor: pointer;
+		width: 100%;
+		height: 35px;
+		background: linear-gradient(45deg, #481661,#1e8c8c, #4826b1); 
+		margin: 0px 0% 0px 0;
+		position: fixed;
+		top: 0px;
+		display: none;
+		
+		
+	}
+	nav{
+		height: 35px;
+		margin: 0 0px;
+	}
+	nav>div{
+		font-size: 1rem;
+		display: inline-block;
+		height: 35px;
+		width: 25%;
+		border: 1px inset #481661;
+		position: relative;
+		top:0px;
+		float: right;
+		margin: 0 15px 0 0px;
+		color: white;
+		font-weight: bold;
+		background-color: #4826b188;
+	}
+	nav>div>select, nav>div>button{
+		font-size: 0.7rem;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		background-color: #4826b188;
+		letter-spacing: 2px;
+		appearance: menulist-button;
+	}
+	#home{
+		position: absolute;
+		top:0px;
+		padding: 3%;
+		text-align: center;
+	}
+
+		main{
+		margin:60px 5% 5% 5%;
+		padding:2% 5%;
+		text-align: center;
+		border-radius: 50px;
+		width: 90%;
+		height: 90%;
+	}	
+	#sec1 fieldset legend{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 2rem;
+		text-align: left;
+	}
+	#sec1 fieldset label{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+		text-align: left;
+	}
+	#sec1 fieldset label input, label select, #sec1 fieldset button{
+		margin: 5% 10%;
+		width:80%;
+		height: 40px;
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+		text-align: center;
+		border-radius: 50px;
+		border: 2px outset black;
+		padding: 0;
+		cursor: pointer;
+	}
+	option{
+		font-family: helvetica;
+		font-weight: bold;
+		font-size: 1rem;
+	}
+	#sec2{
+		display: none;
+	}
+	.zehe{
+		width: 50%;
+		height:40px;
+		border-radius: 50px;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	h1{
+		font-size: 4rem;
+		font-weight: bolder;
+		color:navy;
+	}
+	input{
+		width:80%;
+		border-radius: 50px;
+		height:50px;
+		padding: 0 0 0 35%;
+		font-size: 2rem;
+		font-weight: bolder;
+		margin: 2% 10%;
+	}
+	.check{
+		width: 80%;
+		height:30px;
+		border-radius: 50px;
+		font-size: 1em;
+		font-weight: bold;
+		margin: 2% 10%;
+	}
+	.ques{
+		width: 80%;
+		height:30px;
+		border-radius: 50px;
+		font-size: 1em;
+		font-weight: bold;
+		margin: 2% 10%;
+	}
+	h2{
+		font-size: 2.5rem;
+		font-weight: bolder;
+		margin: 0;
+	}
+	h3{
+		font-size: 1.5rem;
+		font-weight: bolder;
+		margin: 0;
+	}
+	#uppop{
+		position: absolute;
+		margin: 0%;
+		width: 100%;
+		height: 300px;
+	}			
+	}
+</style>
